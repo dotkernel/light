@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <title>{% block title %}{% endblock %} | Dotkernel Light V1</title>
+        {% block canonical %}
+            <link rel="canonical" href="{{ url(routeName ?? null) }}" />
+        {% endblock %}
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/app/favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/app/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/app/favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('images/app/favicon/site.webmanifest') }}">
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="theme-color" content="#ffffff">
+
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body class="app {% block body_class %}{% endblock %}">
+        <div id="wrapper">
+            <header class="app-header">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container">
+                        <a href="/" class="navbar-brand">
+                            <img src="{{ asset('images/app/logo.svg') }}"
+                                 onerror="this.onerror=null; this.src='{{ asset('images/app/logo.png') }}';"
+                                 alt="Dotkernel" />
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarHeader">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="pageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <div class="dropdown-menu" aria-labelledby="pageDropdown">
+                                        <a class="dropdown-item" href="{{ url('page', {action: 'home'}) }}">Home</a>
+                                        <a class="dropdown-item" href="{{ url('page', {action: 'about-us'}) }}">About Us</a>
+                                        <a class="dropdown-item" href="{{ url('page', {action: 'who-we-are'}) }}">Who We Are</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://github.com/dotkernel" target="_blank">Contribute</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="{{ url('page', {action: 'index'}) }}">Disabled</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="app-content content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    {% block page_title %}{% endblock %}
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    {% block content %}{% endblock %}
+                </section>
+            </div>
+
+            <div id="push"></div>
+        </div>
+
+        <footer class="app-footer">
+            <div class="container">
+                <p class="enjoy">
+                    enjoy dotkernel
+                </p>
+                <p>
+                    © {{ 'now'|date('Y') }} Dotkernel by Apidemia
+                </p>
+            </div>
+        </footer>
+
+        <script src="{{ asset('js/app.js') }}"></script>
+        {% block javascript %}{% endblock %}
+    </body>
+</html>
