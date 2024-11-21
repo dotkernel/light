@@ -13,8 +13,7 @@ Minimal project to generate a simple website.
 [![Continuous Integration](https://github.com/dotkernel/light/actions/workflows/continuous-integration.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/light/actions/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/dotkernel/light/graph/badge.svg?token=UpVJ5ELvfZ)](https://codecov.io/gh/dotkernel/light)
 [![Qodana](https://github.com/dotkernel/light/actions/workflows/qodana_code_quality.yml/badge.svg)](https://github.com/dotkernel/light/actions/workflows/qodana_code_quality.yml)
-
-[![SymfonyInsight](https://insight.symfony.com/projects/aabcfa50-aee5-4919-bb60-13a8e9a21333/big.svg)](https://insight.symfony.com/projects/aabcfa50-aee5-4919-bb60-13a8e9a21333)
+[![PHPStan](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml)
 
 ## Installing Dotkernel `light`
 
