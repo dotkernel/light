@@ -58,8 +58,10 @@
         "laminas/laminas-development-mode": "^3.12.0",
         "phpunit/phpunit": "^10.5",
         "roave/security-advisories": "dev-master",
-        "vimeo/psalm": "^5.21.1",
-        "vincentlanglet/twig-cs-fixer": "^2.12"
+        "vincentlanglet/twig-cs-fixer": "^2.12",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "symfony/var-dumper": "^7.1"
     },
     "autoload": {
         "psr-4": {
@@ -90,7 +92,7 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "serve": "php -S 0.0.0.0:8080 -t public/",
-        "static-analysis": "psalm --shepherd --stats",
+        "static-analysis": "phpstan analyse",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
         "twig-cs-check": "vendor/bin/twig-cs-fixer lint --config=config/twig-cs-fixer.php",
