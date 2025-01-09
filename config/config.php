@@ -12,6 +12,8 @@ $cacheConfig = [
     'config_cache_path' => 'data/cache/config-cache.php',
 ];
 
+// phpcs:disable SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName
+
 $aggregator = new ConfigAggregator([
     // Include cache configuration
     new ArrayProvider($cacheConfig),
@@ -19,14 +21,12 @@ $aggregator = new ConfigAggregator([
     \Mezzio\ConfigProvider::class,
     \Mezzio\Helper\ConfigProvider::class,
     \Mezzio\Router\ConfigProvider::class,
-    \Mezzio\Twig\ConfigProvider::class,
     \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
+    \Mezzio\Twig\ConfigProvider::class,
 
     // Dotkernel packages
     \Dot\ErrorHandler\ConfigProvider::class,
     \Dot\Log\ConfigProvider::class,
-    \Dot\Twig\ConfigProvider::class,
-    \Dot\FlashMessenger\ConfigProvider::class,
 
     // Default App module config
     \Light\App\ConfigProvider::class,
@@ -43,5 +43,7 @@ $aggregator = new ConfigAggregator([
     // Load development config if it exists
     new PhpFileProvider(realpath(__DIR__) . '/development.config.php'),
 ], $cacheConfig['config_cache_path']);
+
+// phpcs:enable SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName
 
 return $aggregator->getMergedConfig();

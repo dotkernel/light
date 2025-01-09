@@ -12,8 +12,6 @@ class PageServiceTest extends TestCase
 {
     public function testWillInstantiate(): void
     {
-        $service = new PageService();
-
-        $this->assertInstanceOf(PageServiceInterface::class, $service);
+        $this->assertContainsOnlyInstancesOf(PageServiceInterface::class, [new PageService()]);
     }
 }

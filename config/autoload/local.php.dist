@@ -13,7 +13,6 @@ $baseUrl = 'http://light.dotkernel.localhost';
 
 return [
     'application' => [
-        'name' => 'Dotkernel',
-        'url'  => $baseUrl,
+        'url' => $baseUrl,
     ],
 ];
