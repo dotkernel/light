@@ -25,6 +25,6 @@ class RoutesDelegatorTest extends TestCase
             }
         );
 
-        $this->assertInstanceOf(Application::class, $application);
+        $this->assertContainsOnlyInstancesOf(Application::class, [$application]);
     }
 }

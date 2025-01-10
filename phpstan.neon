@@ -3,11 +3,8 @@ includes:
 parameters:
     level: 5
     paths:
+        - bin
+        - config
         - src
         - test
     treatPhpDocTypesAsCertain: false
-    ignoreErrors:
-        -
-            message: '#Call to method PHPUnit\\Framework\\Assert::assertInstanceOf\(\) with .* will always evaluate to true.#'
-            path: test
-

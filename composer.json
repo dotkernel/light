@@ -20,48 +20,32 @@
         "sort-packages": true,
         "allow-plugins": {
             "dotkernel/*": true,
-            "laminas/laminas-component-installer": true,
             "composer/package-versions-deprecated": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "extra": {
-        "laminas": {
-            "component-whitelist": [
-                "laminas/laminas-httphandlerrunner"
-            ]
-        },
-        "mezzio": {
-            "component-whitelist": [
-                "mezzio/mezzio",
-                "mezzio/mezzio-helpers",
-                "mezzio/mezzio-router",
-                "mezzio/mezzio-fastroute",
-                "mezzio/mezzio-twigrenderer"
-            ]
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "laminas/laminas-component-installer": true
         }
     },
     "require": {
         "php": "~8.2.0 || ~8.3.0",
         "dotkernel/dot-controller": "^3.4.3",
         "dotkernel/dot-errorhandler": "^4.0.0",
-        "dotkernel/dot-twigrenderer": "^3.4.3",
         "friendsofphp/proxy-manager-lts": "^1.0.16",
         "laminas/laminas-component-installer": "^3.4.0",
         "laminas/laminas-config-aggregator": "^1.14.0",
         "mezzio/mezzio": "^3.18.0",
-        "mezzio/mezzio-fastroute": "^3.11.0"
+        "mezzio/mezzio-fastroute": "^3.11.0",
+        "mezzio/mezzio-twigrenderer": "^2.12"
     },
     "require-dev": {
-        "filp/whoops": "^2.15.4",
+        "filp/whoops": "^2.16.0",
         "laminas/laminas-coding-standard": "^3.0",
         "laminas/laminas-development-mode": "^3.12.0",
-        "phpunit/phpunit": "^10.5",
-        "roave/security-advisories": "dev-master",
-        "vincentlanglet/twig-cs-fixer": "^2.12",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "symfony/var-dumper": "^7.1"
+        "phpunit/phpunit": "^10.5",
+        "roave/security-advisories": "dev-master",
+        "symfony/var-dumper": "^7.1",
+        "vincentlanglet/twig-cs-fixer": "^3.5"
     },
     "autoload": {
         "psr-4": {
@@ -71,7 +55,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LightTest\\Unit\\": "test/Unit"
+            "LightTest\\Unit\\": "test/Unit/"
         }
     },
     "scripts": {
