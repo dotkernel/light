@@ -5,8 +5,8 @@
 {% block content %}
     <div class="page-intro home-intro">
         <div class="container">
-            <p class="welcome">Dotkernel is a collection of</p>
-            <h1>PSR-7 Middleware applications</h1>
+            <p class="welcome">Dotkernel Light is a basic</p>
+            <h1>PSR-7 Middleware skeleton</h1>
             <p>Built on top of the Mezzio microframework. <br/>Composed of a set of custom and extended Laminas components.</p>
         </div>
         <div class="arrow_down">
@@ -27,7 +27,11 @@
                         We have chosen <b>Laminas Service Manager</b> as our default implementation.
                     </p>
                     <p>
-                        Get Started with <a href="https://github.com/laminas/laminas-servicemanager" target="_blank" class="text-decoration-none">Laminas Service Manager</a>
+                        Get Started with
+                        <br />
+                        <a href="https://github.com/php-fig/container" target="_blank" class="text-decoration-none">PSR-11</a>
+                        and
+                        <a href="https://github.com/laminas/laminas-servicemanager" target="_blank" class="text-decoration-none">Laminas Service Manager</a>
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -39,7 +43,11 @@
                         For Dotkernel's Light application, we have chosen <b>Twig</b> as the default templating engine.
                     </p>
                     <p>
-                        Get started with <a href="https://twig.symfony.com/" target="_blank" class="text-decoration-none">Twig</a>
+                        Get started with
+                        <br />
+                        <a href="https://twig.symfony.com/" target="_blank" class="text-decoration-none">Twig</a>
+                        and
+                        <a href="https://github.com/mezzio/mezzio-twigrenderer" target="_blank" class="text-decoration-none">Mezzio TwigRenderer</a>
                     </p>
                 </div>
 
@@ -51,7 +59,9 @@
                         Among the various routing implementations compatible with Expressive, we have chosen <b>FastRoute</b> as Dotkernel's default routing library.
                     </p>
                     <p>
-                        Get started with <a href="https://github.com/nikic/FastRoute" target="_blank" class="text-decoration-none">FastRoute</a>
+                        Get started with
+                        <br />
+                        <a href="https://github.com/nikic/FastRoute" target="_blank" class="text-decoration-none">FastRoute</a>
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -62,75 +72,29 @@
                         Laminas, and consequently Dotkernel, is built around the PSR-7 standard.<br />It uses <b>Laminas Diactoros</b> as the PSR-7 implementation.
                     </p>
                     <p>
-                        Get started with <a href="https://github.com/php-fig/http-message" target="_blank" class="text-decoration-none">PSR-7</a> and <a href="https://github.com/laminas/laminas-diactoros" target="_blank" class="text-decoration-none">Diactoros</a>
+                        Get started with
+                        <br />
+                        <a href="https://github.com/php-fig/http-message" target="_blank" class="text-decoration-none">PSR-7</a>
+                        and
+                        <a href="https://github.com/laminas/laminas-diactoros" target="_blank" class="text-decoration-none">Laminas Diactoros</a>
                     </p>
                 </div>
             </div>
 
             <h2>Dotkernel Light components</h2>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="accordion" id="dotkernelComponents">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h4 class="">
-                                    <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Controllers
-                                    </button>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="collapse" data-parent="#dotkernelComponents" aria-labelledby="headingOne">
-                                <div class="card-body">
-                                    <ul class="list-unstyled list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <a href="https://github.com/dotkernel/dot-controller" target="_blank" class="text-decoration-none">dot-controller</a>: controller-like middleware for laminas
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h4 class="">
-                                    <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Logging & Error Handling
-                                    </button>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="collapse" data-parent="#dotkernelComponents" aria-labelledby="headingTwo">
-                                <div class="card-body">
-                                    <ul class="list-unstyled list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <a href="https://github.com/dotkernel/dot-log" target="_blank" class="text-decoration-none">dot-log</a>: generic logging component
-                                        </li>
-                                        <li class="list-group-item">
-                                            <a href="https://github.com/dotkernel/dot-errorhandler" target="_blank" class="text-decoration-none">dot-errorhandler</a>: automatically logs errors
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h4 class="">
-                                    <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Rendering
-                                    </button>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="collapse" data-parent="#dotkernelComponents" aria-labelledby="headingThree">
-                                <div class="card-body">
-                                    <ul class="list-unstyled list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <a href="https://github.com/dotkernel/dot-twigrenderer" target="_blank" class="text-decoration-none">dot-twigrenderer</a> extends the twig renderer with useful extensions and customizations
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-12 text-start">
+                    <ul class="list-unstyled list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="https://github.com/dotkernel/dot-controller" target="_blank" class="text-decoration-none">dot-controller</a>: controller-like middleware for laminas
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://github.com/dotkernel/dot-log" target="_blank" class="text-decoration-none">dot-log</a>: generic logging component
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://github.com/dotkernel/dot-errorhandler" target="_blank" class="text-decoration-none">dot-errorhandler</a>: error logging component
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
