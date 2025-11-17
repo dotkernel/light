@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Light\Book\Handler;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -8,6 +10,8 @@ use Light\Book\Entity\Book;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function array_map;
 
 class ListBooksHandler implements RequestHandlerInterface
 {

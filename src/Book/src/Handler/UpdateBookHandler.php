@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Light\Book\Handler;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,9 +22,9 @@ class UpdateBookHandler implements RequestHandlerInterface
     {
         $uuid = $request->getAttribute('uuid');
 
-        if (!$uuid) {
+        if (! $uuid) {
             return new JsonResponse([
-                'error' => 'UUID is required'
+                'error' => 'UUID is required',
             ], 400);
         }
 
@@ -30,9 +32,9 @@ class UpdateBookHandler implements RequestHandlerInterface
             ->getRepository(Book::class)
             ->find($uuid);
 
-        if (!$book) {
+        if (! $book) {
             return new JsonResponse([
-                'error' => 'Book not found'
+                'error' => 'Book not found',
             ], 404);
         }
 
@@ -42,7 +44,7 @@ class UpdateBookHandler implements RequestHandlerInterface
         $this->entityManager->flush();
 
         return new JsonResponse([
-            'message' => "Book $uuid updated successfully"
+            'message' => "Book $uuid updated successfully",
         ]);
     }
 }

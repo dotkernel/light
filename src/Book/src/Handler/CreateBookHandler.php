@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Light\Book\Handler;
 
 use Doctrine\ORM\EntityManagerInterface;

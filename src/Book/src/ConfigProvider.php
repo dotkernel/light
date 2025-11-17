@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Light\Book;
 
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
@@ -15,7 +17,6 @@ use Mezzio\Application;
 
 class ConfigProvider
 {
-
     public function __invoke(): array
     {
         return [
@@ -37,7 +38,7 @@ class ConfigProvider
                 ListBooksHandler::class  => ListBookHandlerFactory::class,
                 UpdateBookHandler::class => UpdateBookHandlerFactory::class,
                 DeleteBookHandler::class => DeleteBookHandlerFactory::class,
-            ]
+            ],
         ];
     }
 
@@ -45,7 +46,7 @@ class ConfigProvider
     {
         return [
             'driver' => [
-                'orm_default'   => [
+                'orm_default'  => [
                     'drivers' => [
                         'Light\Book\Entity' => 'BookEntities',
                     ],

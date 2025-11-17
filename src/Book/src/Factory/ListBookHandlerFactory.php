@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Light\Book\Factory;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Light\Book\Handler\CreateBookHandler;
 use Light\Book\Handler\ListBooksHandler;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
+
+use function assert;
 
 class ListBookHandlerFactory
 {

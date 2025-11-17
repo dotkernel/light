@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Light\App;
 
-use Core\App\DBAL\Types\SuccessFailureEnumType;
-use Core\App\DBAL\Types\YesNoEnumType;
-use Core\App\Factory\EntityListenerResolverFactory;
-use Core\App\Resolver\EntityListenerResolver;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
@@ -20,6 +16,8 @@ use Ramsey\Uuid\Doctrine\UuidBinaryOrderedTimeType;
 use Ramsey\Uuid\Doctrine\UuidBinaryType;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Roave\PsrContainerDoctrine\EntityManagerFactory;
+
+use function getcwd;
 
 class ConfigProvider
 {
@@ -54,12 +52,12 @@ class ConfigProvider
             ],
             'factories'  => [
                 'doctrine.entity_manager.orm_default' => EntityManagerFactory::class,
-                GetIndexViewHandler::class => GetIndexViewHandlerFactory::class,
+                GetIndexViewHandler::class            => GetIndexViewHandlerFactory::class,
             ],
-            'aliases' => [
+            'aliases'    => [
                 EntityManager::class          => 'doctrine.entity_manager.orm_default',
                 EntityManagerInterface::class => 'doctrine.entity_manager.orm_default',
-            ]
+            ],
         ];
     }
 
@@ -100,12 +98,12 @@ class ConfigProvider
             ],
             'configuration' => [
                 'orm_default' => [
-                    'result_cache'             => 'filesystem',
-                    'metadata_cache'           => 'filesystem',
-                    'query_cache'              => 'filesystem',
-                    'hydration_cache'          => 'array',
-                    'typed_field_mapper'       => null,
-                    'second_level_cache'       => [
+                    'result_cache'       => 'filesystem',
+                    'metadata_cache'     => 'filesystem',
+                    'query_cache'        => 'filesystem',
+                    'hydration_cache'    => 'array',
+                    'typed_field_mapper' => null,
+                    'second_level_cache' => [
                         'enabled'                    => true,
                         'default_lifetime'           => 3600,
                         'default_lock_lifetime'      => 60,
