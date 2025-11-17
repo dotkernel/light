@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+
+require_once 'vendor/autoload.php';
+
+$container = require 'config/container.php';
+
+$entityManager = $container->get(EntityManager::class);
+$entityManager->getEventManager();
+
+ConsoleRunner::run(new SingleManagerProvider($entityManager));
