@@ -30,6 +30,7 @@ $aggregator = new ConfigAggregator([
 
     // Default App module config
     \Light\App\ConfigProvider::class,
+    \Light\Book\ConfigProvider::class,
     \Light\Page\ConfigProvider::class,
 
     // Load application config in a pre-defined order in such a way that local settings

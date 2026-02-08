@@ -32,14 +32,18 @@
         "laminas/laminas-config-aggregator": "^1.17.0",
         "mezzio/mezzio": "^3.24.0",
         "mezzio/mezzio-fastroute": "^3.13.0",
-        "mezzio/mezzio-twigrenderer": "^2.17.0"
-    },
+        "mezzio/mezzio-twigrenderer": "^2.17.0",
+        "ramsey/uuid": "^4.5.0",
+        "ramsey/uuid-doctrine": "^2.1.0",
+        "roave/psr-container-doctrine": "^5.2.2"
+    } ,
     "require-dev": {
         "filp/whoops": "^2.17.0",
         "laminas/laminas-coding-standard": "^3.0.1",
         "laminas/laminas-development-mode": "^3.13.0",
         "phpstan/phpstan": "^2.1.2",
         "phpstan/phpstan-phpunit": "^2.0.4",
+        "phpstan/phpstan-doctrine": "^2.0.3",
         "phpunit/phpunit": "^10.5.45",
         "roave/security-advisories": "dev-master",
         "symfony/var-dumper": "^7.2.3",
@@ -48,7 +52,8 @@
     "autoload": {
         "psr-4": {
             "Light\\App\\": "src/App/src/",
-            "Light\\Page\\": "src/Page/src/"
+            "Light\\Page\\": "src/Page/src/",
+            "Light\\Book\\": "src/Book/src/"
         }
     },
     "autoload-dev": {

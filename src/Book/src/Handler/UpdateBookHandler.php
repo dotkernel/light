@@ -1,0 +1,50 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Light\Book\Handler;
+
+use Doctrine\ORM\EntityManagerInterface;
+use Laminas\Diactoros\Response\JsonResponse;
+use Light\Book\Entity\Book;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+class UpdateBookHandler implements RequestHandlerInterface
+{
+    public function __construct(
+        protected EntityManagerInterface $entityManager
+    ) {
+    }
+
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $uuid = $request->getAttribute('uuid');
+
+        if (! $uuid) {
+            return new JsonResponse([
+                'error' => 'UUID is required',
+            ], 400);
+        }
+
+        $book = $this->entityManager
+            ->getRepository(Book::class)
+            ->find($uuid);
+
+        if (! $book) {
+            return new JsonResponse([
+                'error' => 'Book not found',
+            ], 404);
+        }
+
+        $book->setTitle("Updated doctrine is even cooler");
+
+        $this->entityManager->persist($book);
+        $this->entityManager->flush();
+
+        return new JsonResponse([
+            'message' => "Book $uuid updated successfully",
+        ]);
+    }
+}
