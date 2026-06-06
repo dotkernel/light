@@ -2,6 +2,9 @@ name: Build Assets
 
 on: push
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build assets (Node ${{ matrix.node-version }})
