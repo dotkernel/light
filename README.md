@@ -22,6 +22,7 @@ Documentation is available at: https://docs.dotkernel.org/light-documentation/
 [![Continuous Integration](https://github.com/dotkernel/light/actions/workflows/continuous-integration.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/light/actions/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/dotkernel/light/graph/badge.svg?token=UpVJ5ELvfZ)](https://codecov.io/gh/dotkernel/light)
 [![Qodana](https://github.com/dotkernel/light/actions/workflows/qodana_code_quality.yml/badge.svg)](https://github.com/dotkernel/light/actions/workflows/qodana_code_quality.yml)
+[![Assets](https://github.com/dotkernel/light/actions/workflows/build-assets.yml/badge.svg)](https://github.com/dotkernel/light/actions/workflows/build-assets.yml)
 
 [![PHPStan](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml)
 ![PHPstan Level](https://img.shields.io/badge/PHPStan-level%208-brightgreen)
