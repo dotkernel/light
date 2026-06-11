@@ -60,6 +60,6 @@
     "vite-plugin-bundle-css": "^0.1.1",
     "vite-plugin-commonjs": "^0.10.4",
     "vite-plugin-css-injected-by-js": "^5.0.0",
-    "vite-plugin-minify": "^2.1.0"
+    "vite-plugin-minify": "^3.0.0"
   }
 }
