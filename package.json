@@ -44,7 +44,7 @@
     "style-loader": "^4.0.0",
     "toastr": "^2.1.4",
     "ts-loader": "^9.5.1",
-    "typescript": "^6.0.0",
+    "typescript": "^7.0.0",
     "vite": "^8.0.0",
     "vite-plugin-static-copy": "^4.1.0"
   },
