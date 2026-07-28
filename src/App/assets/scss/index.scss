@@ -1,10 +1,5 @@
 // Bootstrap
-$navbar-height: 60px;
-$grid-float-breakpoint: 767px;
-$icon-font-path: "../../../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
-@import "../../../../node_modules/toastr/toastr";
-@import "../../../../node_modules/bootstrap-slider/src/sass/bootstrap-slider";
+@use "~bootstrap/scss/bootstrap";
 // Base
-@import "components/general";
-@import "components/pages";
+@use "components/general";
+@use "components/pages";
