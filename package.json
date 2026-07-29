@@ -23,19 +23,17 @@
   },
   "homepage": "https://github.com/dotkernel/light#readme",
   "devDependencies": {
+    "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "cross-env": "^10.0.0",
+    "lightningcss": "^1.29.3",
     "pre-commit": "^2.0.0",
     "sass": "^1.86.3",
     "vite": "^8.0.0",
-    "vite-plugin-static-copy": "^4.1.0"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "lightningcss": "^1.29.3",
     "vite-plugin-bundle-css": "^0.1.1",
     "vite-plugin-css-injected-by-js": "^5.0.0",
-    "vite-plugin-minify": "^3.0.0"
+    "vite-plugin-minify": "^3.0.0",
+    "vite-plugin-static-copy": "^4.1.0"
   }
 }
