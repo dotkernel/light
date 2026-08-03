@@ -1,7 +1,8 @@
 # Dotkernel Light
 
-Dotkernel Light is a PSR-15 compliant application (skeleton) using Mezzio microframework and Laminas components.
-It's designed as a minimal project to generate a simple website, like a presentation site.
+Dotkernel Light is the smallest complete Mezzio application — a PSR-15 pipeline, routing and templating, with nothing to strip out.
+A real starting point for a simple site.
+Underneath it uses Laminas Service Manager as the PSR-11 container and Laminas Diactoros for PSR-7 messages, with FastRoute for routing and Twig for templating.
 
 > Check out our [demo](https://light.dotkernel.net/).
 
@@ -27,22 +28,34 @@ Documentation is available at: https://docs.dotkernel.org/light-documentation/
 [![PHPStan](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml)
 ![PHPstan Level](https://img.shields.io/badge/PHPStan-level%208-brightgreen)
 
-## Installing Dotkernel `Light`
+## Contents
 
+- [Requirements](#requirements)
+- [Composer](#composer)
+- [Choosing an Installation Path](#choosing-an-installation-path)
 - [Installing Dotkernel `Light`](#installing-dotkernel-light)
-    - [Composer](#composer)
-    - [Choose a destination path for Dotkernel `Light` installation](#choosing-an-installation-path-for-dotkernel-light)
-    - [Installing Dotkernel light](#installing-dotkernel-light)
-    - [Testing (Running)](#running-the-application)
+- [Development Mode](#development-mode)
+- [Bundling Static Modules](#bundling-static-modules)
+- [Running the Application](#running-the-application)
+- [Testing and Code Quality](#testing-and-code-quality)
+- [Going Live](#going-live)
 
-## Tools
+## Requirements
 
-Dotkernel light interface has been tested with:
+- **PHP** 8.3, 8.4 or 8.5 (`~8.3.0 || ~8.4.0 || ~8.5.0`).
+  All three versions are covered by CI.
+- **Node.js** `^20.19.0 || >=22.12.0` — required by the Vite and Sass versions used to build the interface.
 
-- npm versions: v10.0.4, v10.9.8, v11.13.0.
-- Node.js versions: v20.11.0, v22.22.3, v24.16.0.
+npm ships bundled with Node.js, so any supported Node.js release provides a compatible npm.
 
-### Composer
+> The exact Node.js versions the interface is built against are defined by the matrix in [`.github/workflows/build-assets.yml`](.github/workflows/build-assets.yml), which is the authoritative list.
+
+The following paths must be writable by the user the web server runs as:
+
+- `data/cache/` — compiled Twig templates and the aggregated configuration cache
+- `log/` — application error logs
+
+## Composer
 
 Installation instructions:
 
@@ -51,7 +64,7 @@ Installation instructions:
 
 > If you have never used composer before make sure you read the [`Composer Basic Usage`](https://getcomposer.org/doc/01-basic-usage.md) section in Composer's documentation.
 
-## Choosing an Installation Path for Dotkernel `Light`
+## Choosing an Installation Path
 
 Example:
 
@@ -62,13 +75,14 @@ Example:
 
 After you choose the path for Dotkernel light (`dk` will be used for the remainder of this example), let's move onto installation.
 
-### Installing Dotkernel `Light` Using `git clone`
-
-This method ensures that the default branch is installed, even if it is not released. Run the following command:
+Clone the repository into that path — git creates the directory for you:
 
 ```shell
-git clone https://github.com/dotkernel/light.git .
+git clone https://github.com/dotkernel/light.git dk
+cd dk
 ```
+
+This method ensures that the default branch is installed, even if it is not released.
 
 The dependencies have to be installed separately by running this command:
 
@@ -76,7 +90,7 @@ The dependencies have to be installed separately by running this command:
 composer install
 ```
 
-The setup script prompts for some configuration settings, for example the lines below:
+During installation, the `laminas/laminas-component-installer` Composer plugin prompts for some configuration settings, for example the lines below:
 
 ```shell
 Please select which config file you wish to inject 'Laminas\HttpHandlerRunner\ConfigProvider' into:
@@ -85,29 +99,41 @@ Please select which config file you wish to inject 'Laminas\HttpHandlerRunner\Co
   Make your selection (default is 1):
 ```
 
-Simply select `[0] Do not inject`, because Dotkernel includes its own configProvider which already contains the prompted configurations.
+Select `[0] Do not inject`.
+Dotkernel registers the config providers it needs explicitly in `config/config.php`, so automatic injection is not required.
 
-If you choose `[1] config/config.php` Laminas's `ConfigProvider` will be injected.
+If you choose `[1] config/config.php`, the `ConfigProvider` will be appended to that file instead.
 
 The next question is:
 
 `Remember this option for other packages of the same type? (Y/n)`
 
-You should enter `y` and press `Enter`.
+You should enter `y` and press `Enter`, so you are not asked again for every remaining component.
+
+> This choice is remembered for **all** subsequent components, not just this one.
+> If you later install a package whose `ConfigProvider` does need to be registered, add it to `config/config.php` yourself.
+
+Finally, make sure your local configuration file exists:
+
+```shell
+cp config/autoload/local.php.dist config/autoload/local.php
+```
+
+> A Composer hook normally creates this file for you, but it is registered on `post-update-cmd` only, so it does not run for installs performed from an existing `composer.lock`.
+> The file is git-ignored and holds your local settings — `application.url` and the page routes are defined here and nowhere else.
 
 ## Development Mode
 
-Run this command to enable dev mode by turning debug flag to `true` and turning configuration caching to `off`. It will also make sure that any existing config cache is cleared.
+Run this command to enable dev mode by turning debug flag to `true` and turning configuration caching to `off`.
+It will also make sure that any existing config cache is cleared.
 
 ```shell
 composer development-enable
 ```
 
-- If not already done, remove the `.dist` extension from `config/autoload/development.local.php.dist`.
-
 ## Bundling Static Modules
 
-> Prerequisite software: Node.js v20 (minimum supported version)
+> Prerequisite software: Node.js `^20.19.0 || >=22.12.0`
 
 To install dependencies into the `node_modules` directory run this command.
 
@@ -126,15 +152,30 @@ The build command compiles the components from the `src/App/assets` folder into 
 
 ```shell
 npm run build
-```  
+```
+
+While actively working on the assets, this command rebuilds them on every change instead of requiring a manual rebuild:
+
+```shell
+npm run watch
+```
 
 ## Running the Application
 
-We recommend running your applications in WSL:
+For a quick look, PHP's built-in server is enough:
+
+```shell
+composer serve
+```
+
+The application is then available at http://localhost:8080.
+
+For anything beyond that, we recommend running your applications in WSL:
 
 - Make sure you have [WSL](https://github.com/dotkernel/development/blob/main/wsl/README.md) installed on your system.
 - Currently we provide a distro implementation for [AlmaLinux10](https://docs.dotkernel.org/development/v2/setup/installation/).
 - Install the application in a virtualhost as recommended by the chosen distro.
+  The virtualhost document root must point to the `public` directory — the entry point is `public/index.php` — and never to the project root.
 - Set `$baseUrl` in **config/autoload/local.php** to the address of your virtualhost.
 - Run the application by opening the virtualhost address in your browser.
 
@@ -142,10 +183,35 @@ You should see the `Dotkernel Light` welcome page.
 
 **NOTE:**
 
-- If you are getting exceptions or errors regarding some missing services, try running the following command:
+- If you are getting exceptions or errors regarding some missing services, clear the configuration cache:
 
 ```shell
-sudo php bin/clear-config-cache.php
+composer clear-config-cache
 ```
 
 > If `config-cache.php` is present that config will be loaded regardless of the `ConfigAggregator::ENABLE_CACHE` in `config/autoload/mezzio.global.php`
+
+## Testing and Code Quality
+
+Run every check at once — coding standard, Twig coding standard, static analysis and unit tests:
+
+```shell
+composer check
+```
+
+The individual commands are also available:
+
+| Command | Purpose |
+| --- | --- |
+| `composer cs-check` / `composer cs-fix` | PHP coding standard (Laminas Coding Standard) |
+| `composer twig-cs-check` / `composer twig-cs-fix` | Twig template coding standard |
+| `composer static-analysis` | PHPStan, level 8 |
+| `composer test` | PHPUnit test suite |
+
+## Going Live
+
+Before deploying to production, rename the robots file and adjust it for your site:
+
+```shell
+mv public/robots.txt.dist public/robots.txt
+```

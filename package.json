@@ -4,6 +4,9 @@
   "description": "Minimal project to generate a simple website.",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "watch": "vite build --watch",
     "build": "vite build"
