@@ -1,7 +1,8 @@
 # Dotkernel Light
 
-Dotkernel Light is a PSR-15 compliant application (skeleton) using Mezzio microframework and Laminas components.
-It's designed as a minimal project to generate a simple website, like a presentation site.
+Dotkernel Light is the smallest complete Mezzio application — a PSR-15 pipeline, routing and templating, with nothing to strip out.
+A real starting point for a simple site.
+Underneath it uses Laminas Service Manager as the PSR-11 container and Laminas Diactoros for PSR-7 messages, with FastRoute for routing and Twig for templating.
 
 > Check out our [demo](https://light.dotkernel.net/).
 
