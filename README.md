@@ -41,14 +41,13 @@ Documentation is available at: https://docs.dotkernel.org/light-documentation/
 
 ## Requirements
 
-- **PHP** 8.3, 8.4 or 8.5 (`~8.3.0 || ~8.4.0 || ~8.5.0`). All three versions are covered by CI.
+- **PHP** 8.3, 8.4 or 8.5 (`~8.3.0 || ~8.4.0 || ~8.5.0`).
+  All three versions are covered by CI.
 - **Node.js** `^20.19.0 || >=22.12.0` — required by the Vite and Sass versions used to build the interface.
 
 npm ships bundled with Node.js, so any supported Node.js release provides a compatible npm.
 
-> The exact Node.js versions the interface is built against are defined by the matrix in
-> [`.github/workflows/build-assets.yml`](.github/workflows/build-assets.yml), which is the
-> authoritative list.
+> The exact Node.js versions the interface is built against are defined by the matrix in [`.github/workflows/build-assets.yml`](.github/workflows/build-assets.yml), which is the authoritative list.
 
 The following paths must be writable by the user the web server runs as:
 
@@ -90,8 +89,7 @@ The dependencies have to be installed separately by running this command:
 composer install
 ```
 
-During installation, the `laminas/laminas-component-installer` Composer plugin prompts for some
-configuration settings, for example the lines below:
+During installation, the `laminas/laminas-component-installer` Composer plugin prompts for some configuration settings, for example the lines below:
 
 ```shell
 Please select which config file you wish to inject 'Laminas\HttpHandlerRunner\ConfigProvider' into:
@@ -100,8 +98,8 @@ Please select which config file you wish to inject 'Laminas\HttpHandlerRunner\Co
   Make your selection (default is 1):
 ```
 
-Select `[0] Do not inject`. Dotkernel registers the config providers it needs explicitly in
-`config/config.php`, so automatic injection is not required.
+Select `[0] Do not inject`.
+Dotkernel registers the config providers it needs explicitly in `config/config.php`, so automatic injection is not required.
 
 If you choose `[1] config/config.php`, the `ConfigProvider` will be appended to that file instead.
 
@@ -111,9 +109,8 @@ The next question is:
 
 You should enter `y` and press `Enter`, so you are not asked again for every remaining component.
 
-> This choice is remembered for **all** subsequent components, not just this one. If you later
-> install a package whose `ConfigProvider` does need to be registered, add it to `config/config.php`
-> yourself.
+> This choice is remembered for **all** subsequent components, not just this one.
+> If you later install a package whose `ConfigProvider` does need to be registered, add it to `config/config.php` yourself.
 
 Finally, make sure your local configuration file exists:
 
@@ -121,14 +118,13 @@ Finally, make sure your local configuration file exists:
 cp config/autoload/local.php.dist config/autoload/local.php
 ```
 
-> A Composer hook normally creates this file for you, but it is registered on `post-update-cmd`
-> only, so it does not run for installs performed from an existing `composer.lock`. The file is
-> git-ignored and holds your local settings — `application.url` and the page routes are defined
-> here and nowhere else.
+> A Composer hook normally creates this file for you, but it is registered on `post-update-cmd` only, so it does not run for installs performed from an existing `composer.lock`.
+> The file is git-ignored and holds your local settings — `application.url` and the page routes are defined here and nowhere else.
 
 ## Development Mode
 
-Run this command to enable dev mode by turning debug flag to `true` and turning configuration caching to `off`. It will also make sure that any existing config cache is cleared.
+Run this command to enable dev mode by turning debug flag to `true` and turning configuration caching to `off`.
+It will also make sure that any existing config cache is cleared.
 
 ```shell
 composer development-enable
@@ -157,8 +153,7 @@ The build command compiles the components from the `src/App/assets` folder into 
 npm run build
 ```
 
-While actively working on the assets, this command rebuilds them on every change instead of
-requiring a manual rebuild:
+While actively working on the assets, this command rebuilds them on every change instead of requiring a manual rebuild:
 
 ```shell
 npm run watch
@@ -178,9 +173,8 @@ For anything beyond that, we recommend running your applications in WSL:
 
 - Make sure you have [WSL](https://github.com/dotkernel/development/blob/main/wsl/README.md) installed on your system.
 - Currently we provide a distro implementation for [AlmaLinux10](https://docs.dotkernel.org/development/v2/setup/installation/).
-- Install the application in a virtualhost as recommended by the chosen distro. The virtualhost
-  document root must point to the `public` directory — the entry point is `public/index.php` —
-  and never to the project root.
+- Install the application in a virtualhost as recommended by the chosen distro.
+  The virtualhost document root must point to the `public` directory — the entry point is `public/index.php` — and never to the project root.
 - Set `$baseUrl` in **config/autoload/local.php** to the address of your virtualhost.
 - Run the application by opening the virtualhost address in your browser.
 
