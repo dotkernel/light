@@ -42,7 +42,7 @@
         "phpstan/phpstan-phpunit": "^2.0.4",
         "phpunit/phpunit": "^12.5.23",
         "roave/security-advisories": "dev-master",
-        "symfony/var-dumper": "^7.2.3",
+        "symfony/var-dumper": "^8.0.0",
         "vincentlanglet/twig-cs-fixer": "^4.0.0"
     },
     "autoload": {
