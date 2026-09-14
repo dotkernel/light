@@ -2,13 +2,8 @@
 
 Dotkernel Light is the smallest complete Mezzio application — a PSR-15 pipeline, routing and templating, with nothing to strip out.
 A real starting point for a simple site.
-Underneath it uses Laminas Service Manager as the PSR-11 container and Laminas Diactoros for PSR-7 messages, with FastRoute for routing and Twig for templating.
 
 > Check out our [demo](https://light.dotkernel.net/).
-
-## Documentation
-
-Documentation is available at: https://docs.dotkernel.org/light-documentation/
 
 ## Badges
 
@@ -28,8 +23,41 @@ Documentation is available at: https://docs.dotkernel.org/light-documentation/
 [![PHPStan](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/light/actions/workflows/static-analysis.yml)
 ![PHPstan Level](https://img.shields.io/badge/PHPStan-level%208-brightgreen)
 
+## What's Inside
+
+Light is built on [Mezzio](https://docs.mezzio.dev/mezzio/) and Laminas components, around the PSR standards:
+
+| Concern | Standard | Implementation |
+| --- | --- | --- |
+| Containers | [PSR-11](https://github.com/php-fig/container) | [Laminas Service Manager](https://github.com/laminas/laminas-servicemanager) |
+| HTTP messages | [PSR-7](https://github.com/php-fig/http-message) | [Laminas Diactoros](https://github.com/laminas/laminas-diactoros) |
+| Middleware pipeline | [PSR-15](https://github.com/php-fig/http-server-middleware) | Mezzio |
+| Routing | — | [FastRoute](https://github.com/nikic/FastRoute) |
+| Templating | — | [Twig](https://twig.symfony.com/), through [Mezzio TwigRenderer](https://github.com/mezzio/mezzio-twigrenderer) |
+
+Two Dotkernel components are registered out of the box in [`config/config.php`](config/config.php):
+
+- [dot-log](https://github.com/dotkernel/dot-log) — generic logging component
+- [dot-errorhandler](https://github.com/dotkernel/dot-errorhandler) — error logging component
+
+## The Dotkernel Family
+
+Dotkernel is a collection of open-source PHP application skeletons built on Mezzio and Laminas, which can be adopted separately or together:
+
+- [API](https://github.com/dotkernel/api) — REST APIs on a readable PSR-15 middleware pipeline
+- [Admin](https://github.com/dotkernel/admin) — table-based backend for managing platform records, plus tools to build reports and dashboards
+- [Queue](https://github.com/dotkernel/queue) — background job processing for the platform
+- [Frontend](https://github.com/dotkernel/frontend) — web starter package for frontend applications
+- **Light** — this repository, for the simplest use cases
+
+## Documentation
+
+Documentation is available at: https://docs.dotkernel.org/light-documentation/
+
 ## Contents
 
+- [What's Inside](#whats-inside)
+- [The Dotkernel Family](#the-dotkernel-family)
 - [Requirements](#requirements)
 - [Composer](#composer)
 - [Choosing an Installation Path](#choosing-an-installation-path)
@@ -39,6 +67,7 @@ Documentation is available at: https://docs.dotkernel.org/light-documentation/
 - [Running the Application](#running-the-application)
 - [Testing and Code Quality](#testing-and-code-quality)
 - [Going Live](#going-live)
+- [Resources](#resources)
 
 ## Requirements
 
@@ -75,20 +104,14 @@ Example:
 
 After you choose the path for Dotkernel light (`dk` will be used for the remainder of this example), let's move onto installation.
 
-Clone the repository into that path — git creates the directory for you:
+Composer creates the directory, installs the application with its dependencies, and enables development mode — all in one step:
 
 ```shell
-git clone https://github.com/dotkernel/light.git dk
+composer create-project dotkernel/light dk
 cd dk
 ```
 
-This method ensures that the default branch is installed, even if it is not released.
-
-The dependencies have to be installed separately by running this command:
-
-```shell
-composer install
-```
+### Installation Prompts
 
 During installation, the `laminas/laminas-component-installer` Composer plugin prompts for some configuration settings, for example the lines below:
 
@@ -130,6 +153,9 @@ It will also make sure that any existing config cache is cleared.
 ```shell
 composer development-enable
 ```
+
+> `composer create-project` already runs this for you, so you only need it after a `composer development-disable`.
+> Run `composer development-status` to check which mode you are in.
 
 ## Bundling Static Modules
 
@@ -215,3 +241,11 @@ Before deploying to production, rename the robots file and adjust it for your si
 ```shell
 mv public/robots.txt.dist public/robots.txt
 ```
+
+## Resources
+
+- [Documentation](https://docs.dotkernel.org/light-documentation/) — installation, request lifecycle, file structure and how-tos
+- [Changelog](CHANGELOG.md) — release history
+- [Security policy](SECURITY.md) — supported versions and how to report a vulnerability
+- [License](LICENSE) — MIT
+- [Issues](https://github.com/dotkernel/light/issues) — bug reports and feature requests
