@@ -7,14 +7,14 @@ export default defineConfig({
         viteStaticCopy({
             targets: [
                 {
-                    src: 'App/assets/fonts/*',
+                    src: 'App/assets/fonts/**/*',
                     dest: 'fonts',
-                    rename: { stripBase: true },
+                    rename: { stripBase: 3 },
                 },
                 {
-                    src: 'App/assets/images/*',
+                    src: 'App/assets/images/**/*',
                     dest: 'images/app/',
-                    rename: { stripBase: true },
+                    rename: { stripBase: 3 },
                 },
             ],
         }),
