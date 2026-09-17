@@ -38,5 +38,10 @@
     "vite-plugin-css-injected-by-js": "^5.0.0",
     "vite-plugin-minify": "^3.0.0",
     "vite-plugin-static-copy": "^4.1.0"
+  },
+  "overrides": {
+    "nanoid": "^3.3.18",
+    "postcss": "^8.5.23",
+    "svgo": "^4.1.0"
   }
 }
