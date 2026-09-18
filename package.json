@@ -43,5 +43,10 @@
     "nanoid": "^6.0.0",
     "postcss": "^8.5.23",
     "svgo": "^4.1.0"
+  },
+  "allowScripts": {
+    "pre-commit": false,
+    "@parcel/watcher": false,
+    "fsevents": false
   }
 }
