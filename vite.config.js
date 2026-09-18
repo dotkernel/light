@@ -21,7 +21,7 @@ export default defineConfig({
         ViteMinifyPlugin({}),
     ],
     emptyOutDir: true,
-    root: path.resolve(__dirname, 'src'), // Set the root directory for Vite
+    root: path.resolve(import.meta.dirname, 'src'), // Set the root directory for Vite
     build: {
         outDir: '../public', // Output directory for compiled assets
         rollupOptions: {
