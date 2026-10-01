@@ -40,7 +40,7 @@
         "laminas/laminas-development-mode": "^3.13.0",
         "phpstan/phpstan": "^2.1.2",
         "phpstan/phpstan-phpunit": "^2.0.4",
-        "phpunit/phpunit": "^12.5.23",
+        "phpunit/phpunit": "^13.0.0",
         "roave/security-advisories": "dev-master",
         "symfony/var-dumper": "^7.2.3",
         "vincentlanglet/twig-cs-fixer": "^4.0.0"
